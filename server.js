@@ -1,19 +1,12 @@
-import path from "node:path";
 import http from "node:http";
-import fs from 'node:fs/promises'
+import { serveStatic } from "./utils/serveStatic.js";
 
 const PORT = 8000;
 
 const __dirname = import.meta.dirname;
 
-const pathToResource = path.join(__dirname, 'public', 'index.html');
-
-const content = await fs.readFile(pathToResource, 'utf8');
-
-const server = http.createServer((req, res) => {
-  res.setHeader("Content-Type", "text/html");
-  res.statusCode = 200;
-  res.end(content);
+const server = http.createServer(async (req, res) => {
+  await serveStatic(req, res, __dirname);
 });
 
-server.listen(PORT, () => console.log(`Server running on ${PORT}`));
+server.listen(PORT, () => console.log(`Connected on port: ${PORT}`));
