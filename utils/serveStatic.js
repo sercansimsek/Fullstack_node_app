@@ -26,7 +26,7 @@ export async function serveStatic(req, res, baseDir) {
 				res,
 				500,
 				"text/html",
-				"<html><h1>Server Error: ${err.code}</h1></html>",
+				`<html><h1>Server Error: ${err.code}</h1></html>`,
 			);
 		}
 		console.log(err);
