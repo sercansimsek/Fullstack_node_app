@@ -1,5 +1,5 @@
-import { getData } from "../getData";
-import { sendResponse } from "../sendResponse";
+import { getData } from "../getData.js";
+import { sendResponse } from "../sendResponse.js";
 
 export async function handleGet(res) {
 	const data = await getData();
